@@ -6,8 +6,8 @@ Function CopyInto-SnowflakeStage {
         $sfOdbc.Open()
 
         $copyStmt = @"
-copy into @smprod_db.stage.goldenrecord_stage from (select distinct '<empty>', trim(g.customersourceid, '"'), g.email, g.mobile, g.FirstName, g.LastName
-from smprod_db.stage.STAGE_CUSTOMERS g where trim(email, ' ') <> '' order by email) file_format=(skip_header=1 null_if=('') field_optionally_enclosed_by='"') overwrite=true;
+copy into @smprod_db.stage.goldenrecord_stage from (select distinct '<empty>', trim(g.customersourceid, '"'), g.email, g.mobile, g.FirstName, g.LastName, g.Date
+from smprod_db.stage.STAGE_CUSTOMERS g where trim(email, ' ') <> '' order by email, firstname, lastname) file_format=(skip_header=1 null_if=('') field_optionally_enclosed_by='"') overwrite=true;
 "@
         $copyCmd = New-Object System.Data.Odbc.OdbcCommand($copyStmt,$sfOdbc)
         $loadRes = New-Object Data.DataTable

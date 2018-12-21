@@ -12,9 +12,9 @@ Import-module $PSScriptRoot\CopyInto-SnowflakeGoldenRecord.ps1
 #get @smprod_db.stage.goldenrecord_stage file://c:/temp/goldenrecord/ PATTERN = '.*data.*[.]csv.gz';
 #------------------------------------------------------------------------------------------------
 #remove @smprod_db.stage.goldenrecord_stage PATTERN = '.*newdata.*[.]csv.gz';
-#put file://C:\temp\goldenrecord\newdata*.csv @smprod_db.stage.#goldenrecord_stage;
+#put file://C:\temp\goldenrecord\newdata*.csv @smprod_db.stage.goldenrecord_stage;
 #------------------------------------------------------------------------------------------------
-#create or replace table stage.GoldenRecord_10 ( customerKey varchar(36), CustomerSourceId varchar(36), Email varchar(100), Mobile varchar(36), FirstName varchar(36), LastName varchar(36), Date timestamp );
+#create or replace table stage.GoldenRecord181221 ( customerKey varchar(36), CustomerSourceId varchar(36), Email varchar(255), Mobile varchar(255), FirstName varchar(255), LastName varchar(255), Date_column varchar(36) );
 #------------------------------------------------------------------------------------------------
 #COPY INTO "SMPROD_DB"."STAGE"."GOLDENRECORD_10" FROM '@"SMPROD_DB"."STAGE"."GOLDENRECORD_STAGE"/' 
 #PATTERN = '.*newdata.*[.]csv.gz' FILE_FORMAT = '"SMPROD_DB"."STAGE"."GOLDENRECORD"' ON_ERROR = 'ABORT_STATEMENT' PURGE = FALSE;

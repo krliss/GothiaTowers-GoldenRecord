@@ -5,7 +5,7 @@ Function CreateReplace-SnowflakeTable {
         $sfOdbc.ConnectionString = $AZDWConStr
         $sfOdbc.Open()
 
-        $remSQL = "create or replace table stage.GoldenRecord_10 ( customerKey varchar(36), CustomerSourceId varchar(36), Email varchar(100), Mobile varchar(36), FirstName varchar(36), LastName varchar(36) );"
+        $remSQL = "create or replace table stage.GoldenRecord181221 ( customerKey varchar(36), CustomerSourceId varchar(36), Email varchar(255), Mobile varchar(255), FirstName varchar(255), LastName varchar(255), Date_column varchar(36) );"
         $null = (New-Object System.Data.Odbc.OdbcCommand($remSQL,$sfOdbc)).ExecuteNonQuery()
 
         $sfOdbc.Close()
